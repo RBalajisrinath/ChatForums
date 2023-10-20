@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
-  <title>ChatCord App</title>
+  <title>Community Forum</title>
 </head>
 <body>
   <div class="chat-container">
     <header class="chat-header">
-      <h1><i class="fas fa-smile"></i> Chat App</h1>
+      <h1><i class="fas fa-smile">&nbsp;</i> Community Forum</h1>
       <a href="index.html" class="logout-btn fas fa-times"></a>
     </header>
     <main class="chat-main">
@@ -40,5 +40,36 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js" integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/chat.js"></script>
+  <script>
+    // In your client-side code
+async function fetchOldMessages(room) {
+    try {
+        const response = await fetch('/api/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ room }),
+        });
+
+        if (response.ok) {
+            const messages = await response.json();
+            // Display the old messages in your chat interface
+        } else {
+            console.error('Failed to fetch old messages');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+socket.on('joinRoom', ({ username, room }) => {
+    const user = userJoin(socket.id, username, room);
+    socket.join(user.room);
+    socket.emit('message', formatMessage(admin, 'Welcome to Chat App!'));
+    fetchOldMessages(user.room);
+});
+
+  </script>
 </body>
 </html>

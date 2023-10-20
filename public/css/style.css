@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
 
 :root {
-	--dark-color-a: #667aff;
-	--dark-color-b: #7386ff;
+	--dark-color-a: rgba(0, 255, 225, 0.934);
+	--dark-color-b:rgba(0, 255, 225, 0.934);
 	--light-color: #e6e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
@@ -121,7 +121,6 @@ a {
 	margin-bottom: 15px;
 	background-color: var(--light-color);
 	border-radius: 10px;
-
 	animation: fadeIn 1s;
 	-webkit-animation: fadeIn 1s;
 	-moz-animation: fadeIn 1s;
@@ -238,7 +237,6 @@ a {
 	display: none;
 	opacity: 0;
 	max-width: 500px;
-	/* margin: 80px auto; */
 	position: absolute;
   	top: 50%;
   	left: 50%;
@@ -252,12 +250,10 @@ a {
 .join-header {
 	text-align: center;
 	padding: 20px;
-	/* background: var(--dark-color-a); */
 	background-color: rgba(255, 255, 255, 0.10);  
  	backdrop-filter: blur(1px);
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	transition: all 0.3s ease;
@@ -265,10 +261,8 @@ a {
 
 .join-main {
 	padding: 25px 50px 25px;
-	/* background: var(--dark-color-b); */
 	background-color: rgba(0, 0, 0, 0.3);  
  	backdrop-filter: blur(1px);
-	
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 	transition: all 0.3s ease;
